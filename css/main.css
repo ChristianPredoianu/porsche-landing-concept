@@ -1,3 +1,21 @@
+/*
+0-600px:      Phone
+600-900px:    Tablet: Portrait
+900-1200px:   Tablet Landscape
+[1200-1800px] Is where the normal styles apply
+1800px + :    Big Desktop
+
+
+$breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1 em = 16 px;
+600px/16px = 37.5em;
+
+*/
 * {
   margin: 0;
   padding: 0;
@@ -17,9 +35,8 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -30,13 +47,41 @@ body {
   text-transform: uppercase;
 }
 
+@media (max-width: 56.25em) {
+  .header {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 20vh;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .header {
+    height: 25vh;
+  }
+}
+
 .header__logo {
   font-size: 3rem;
-  width: 20vw;
+  margin-left: 3rem;
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
+}
+
+@media (max-width: 56.25em) {
+  .header__logo {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .header__logo {
+    font-size: 2rem;
+    margin: 0 0 0 2rem;
+  }
 }
 
 nav {
@@ -47,6 +92,27 @@ nav {
   margin-right: 5rem;
 }
 
+@media (max-width: 75em) {
+  nav {
+    width: 55%;
+  }
+}
+
+@media (max-width: 56.25em) {
+  nav {
+    width: 65%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 37.5em) {
+  nav {
+    width: 50%;
+    margin: 0;
+    height: 100%;
+  }
+}
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -55,17 +121,62 @@ nav {
       justify-content: space-around;
   list-style: none;
   font-size: 1.5rem;
-  margin-right: 5rem;
+}
+
+@media (max-width: 56.25em) {
+  .nav {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0;
+  }
 }
 
 .nav__links {
   cursor: pointer;
+  -webkit-transition: color 1s ease;
+  transition: color 1s ease;
+}
+
+.nav__links:hover {
+  color: #ffa500;
 }
 
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0 5rem;
+}
+
+@media (max-width: 56.25em) {
+  .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 0;
+  }
 }
 
 .left-section {
@@ -86,9 +197,45 @@ nav {
   margin-top: 25vh;
 }
 
+@media (max-width: 56.25em) {
+  .left-section {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 100%;
+    height: 20vh;
+    margin: 5rem 0;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .left-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 25vh;
+    height: 50vh;
+    width: 20%;
+  }
+}
+
 .left-section .fab {
   font-size: 5rem;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+
+.left-section .fab:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
 
 .main {
@@ -97,53 +244,134 @@ nav {
   height: 90vh;
 }
 
-.main__new {
+@media (max-width: 56.25em) {
+  .main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 80%;
+  }
+}
+
+.main__image {
+  width: 40%;
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 35rem;
+  left: 35%;
+  -webkit-filter: grayscale(100%) contrast(200%);
+          filter: grayscale(100%) contrast(200%);
+}
+
+@media (max-width: 75em) {
+  .main__image {
+    top: 35rem;
+  }
+}
+
+@media (max-width: 56.25em) {
+  .main__image {
+    top: 20rem;
+    left: 25%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .main__image {
+    width: 80%;
+    top: 58%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -58%);
+            transform: translate(-50%, -58%);
+  }
+}
+
+.description {
+  margin-top: 15rem;
+  z-index: 30;
+}
+
+@media (max-width: 56.25em) {
+  .description {
+    margin: 0 0 0 5rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .description {
+    margin: 12rem 0 0 0;
+  }
+}
+
+.description__new {
   font-size: 3rem;
   text-transform: uppercase;
 }
 
-.main__model {
-  position: absolute;
-  top: 15%;
-  left: 10%;
+@media (max-width: 37.5em) {
+  .description__new {
+    font-size: 2.5rem;
+  }
+}
+
+.description__model {
   font-size: 5rem;
 }
 
-.main__s {
+@media (max-width: 37.5em) {
+  .description__model {
+    font-size: 2rem;
+  }
+}
+
+.description__s {
   color: #ffa500;
 }
 
-.main__performance {
-  position: absolute;
-  top: 23%;
-  left: 20%;
+.description__performance {
+  margin-left: 18rem;
   font-size: 3rem;
 }
 
-.main__plus {
+@media (max-width: 37.5em) {
+  .description__performance {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+}
+
+.description__plus {
   color: #ffa500;
 }
 
-.main__latest {
-  position: absolute;
-  top: 29%;
-  left: 27%;
+.description__latest {
   font-size: 1.5rem;
+  margin-left: 30rem;
 }
 
-.main__seconds {
+@media (max-width: 37.5em) {
+  .description__latest {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+
+.description__seconds {
   color: #ffa500;
-}
-
-.main__image {
-  width: 50%;
-  position: absolute;
-  top: 35%;
-  left: 35%;
-  -webkit-filter: grayscale(100%) contrast(200%);
-          filter: grayscale(100%) contrast(200%);
 }
 /*# sourceMappingURL=main.css.map */

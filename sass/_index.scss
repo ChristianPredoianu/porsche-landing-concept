@@ -14,7 +14,7 @@ body {
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 10vh;
@@ -22,12 +22,30 @@ body {
   color: #000000;
   text-transform: uppercase;
 
+  @include respond(tab-port) {
+    justify-content: space-between;
+    height: 20vh;
+  }
+
+  @include respond(phone) {
+    height: 25vh;
+  }
+
   &__logo {
     font-size: 3rem;
-    width: 20vw;
+    margin-left: 3rem;
     text-align: center;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(4px);
+
+    @include respond(tab-port) {
+      font-size: 2rem;
+    }
+
+    @include respond(phone) {
+      font-size: 2rem;
+      margin: 0 0 0 2rem;
+    }
   }
 }
 
@@ -37,6 +55,21 @@ nav {
   color: white;
   padding: 2rem 0;
   margin-right: 5rem;
+
+  @include respond(tab-land) {
+    width: 55%;
+  }
+
+  @include respond(tab-port) {
+    width: 65%;
+    margin: 0;
+  }
+
+  @include respond(phone) {
+    width: 50%;
+    margin: 0;
+    height: 100%;
+  }
 }
 
 .nav {
@@ -44,15 +77,40 @@ nav {
   justify-content: space-around;
   list-style: none;
   font-size: 1.5rem;
-  margin-right: 5rem;
+
+  @include respond(tab-port) {
+    font-size: 1.3rem;
+  }
+
+  @include respond(phone) {
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    margin: 0;
+  }
 
   &__links {
     cursor: pointer;
+    transition: color 1s ease;
+
+    &:hover {
+      color: #ffa500;
+    }
   }
 }
 
 .container {
   display: flex;
+  margin: 0 5rem;
+
+  @include respond(tab-port) {
+    flex-direction: column;
+  }
+
+  @include respond(phone) {
+    flex-direction: row;
+    margin: 0;
+  }
 }
 
 .left-section {
@@ -64,9 +122,29 @@ nav {
   height: 50vh;
   margin-top: 25vh;
 
+  @include respond(tab-port) {
+    flex-direction: row;
+    width: 100%;
+    height: 20vh;
+    margin: 5rem 0;
+  }
+
+  @include respond(phone) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25vh;
+    height: 50vh;
+    width: 20%;
+  }
+
   .fab {
     font-size: 5rem;
     cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 }
 
@@ -75,19 +153,70 @@ nav {
   width: 80%;
   height: 90vh;
 
-  &__new {
+  @include respond(tab-port) {
+    width: 100%;
+  }
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+  }
+
+  &__image {
+    width: 40%;
     position: absolute;
-    top: 10%;
-    left: 10%;
+    top: 35rem;
+    left: 35%;
+    filter: grayscale(100%) contrast(200%);
+
+    @include respond(tab-land) {
+      top: 35rem;
+    }
+
+    @include respond(tab-port) {
+      top: 20rem;
+      left: 25%;
+    }
+
+    @include respond(phone) {
+      width: 80%;
+      top: 58%;
+      left: 50%;
+      transform: translate(-50%, -58%);
+    }
+  }
+}
+
+.description {
+  margin-top: 15rem;
+  z-index: 30;
+
+  @include respond(tab-port) {
+    margin: 0 0 0 5rem;
+  }
+
+  @include respond(phone) {
+    margin: 12rem 0 0 0;
+  }
+
+  &__new {
     font-size: 3rem;
     text-transform: uppercase;
+
+    @include respond(phone) {
+      font-size: 2.5rem;
+    }
   }
 
   &__model {
-    position: absolute;
-    top: 15%;
-    left: 10%;
     font-size: 5rem;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
   }
 
   &__s {
@@ -95,10 +224,13 @@ nav {
   }
 
   &__performance {
-    position: absolute;
-    top: 23%;
-    left: 20%;
+    margin-left: 18rem;
     font-size: 3rem;
+
+    @include respond(phone) {
+      font-size: 1.8rem;
+      margin: 0;
+    }
   }
 
   &__plus {
@@ -106,21 +238,16 @@ nav {
   }
 
   &__latest {
-    position: absolute;
-    top: 29%;
-    left: 27%;
     font-size: 1.5rem;
+    margin-left: 30rem;
+
+    @include respond(phone) {
+      font-size: 1.5rem;
+      margin: 0;
+    }
   }
 
   &__seconds {
     color: #ffa500;
-  }
-
-  &__image {
-    width: 50%;
-    position: absolute;
-    top: 35%;
-    left: 35%;
-    filter: grayscale(100%) contrast(200%);
   }
 }
