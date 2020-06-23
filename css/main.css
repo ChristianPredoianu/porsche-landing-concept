@@ -314,7 +314,7 @@ nav {
 
 @media (max-width: 56.25em) {
   .description {
-    margin: 0 0 0 5rem;
+    margin: 0 0 0 10rem;
   }
 }
 
@@ -368,13 +368,13 @@ nav {
 
 .description__latest {
   font-size: 1.5rem;
-  margin-left: 30rem;
+  margin-left: 3rem;
 }
 
 @media (max-width: 37.5em) {
   .description__latest {
     font-size: 1.5rem;
-    margin-left: 5rem;
+    margin-left: 4rem;
   }
 }
 
